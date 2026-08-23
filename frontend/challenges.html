@@ -1,43 +1,77 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="disclaimer">
-  All challenges are simulated and for educational purposes only. Do not attack real systems.
+  All challenges are simulated and for educational purposes only. Never attack real systems without permission.
 </div>
 
-<h1>Hacking Challenges</h1>
-<p class="lead">Practice ethical hacking skills with safe, legal challenges.</p>
+<h1>Ethical Hacking Challenges</h1>
+<p class="lead">
+  Practice real skills in a safe environment. Each challenge teaches a specific concept used in professional cybersecurity.
+</p>
 
 <div class="ads-slot">Advertisement Space (AdSense Ready)</div>
 
 <div class="grid">
   <div class="card">
-    <h3>OSINT Challenge #1</h3>
-    <p>Find public information about a fictional person using only open sources.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:var(--accent)">Difficulty: Beginner</p>
+    <h3>OSINT Challenge #1 — Public Footprint</h3>
+    <p>
+      A fictional person left public traces online. 
+      Your goal is to find their username on at least 3 platforms using only public information.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: OSINT</p>
   </div>
+
   <div class="card">
-    <h3>Web Challenge #1</h3>
-    <p>Simple HTML source inspection and hidden information challenge.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:var(--accent)">Difficulty: Beginner</p>
+    <h3>Web Challenge #1 — View Source</h3>
+    <p>
+      Something is hidden in the HTML source of a simple page. 
+      Learn how developers accidentally leave information in plain sight.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Web</p>
   </div>
+
   <div class="card">
-    <h3>Crypto Challenge #1</h3>
-    <p>Decode classic encodings (Base64, Hex, ROT13) to find the flag.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:var(--accent)">Difficulty: Beginner</p>
+    <h3>Crypto Challenge #1 — Classic Encoding</h3>
+    <p>
+      Decode a series of classic encodings (Base64, Hex, ROT13) to recover the flag. 
+      Perfect introduction to data encoding.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Cryptography</p>
   </div>
+
   <div class="card">
-    <h3>OSINT Challenge #2</h3>
-    <p>Trace a public social media footprint of a fictional account.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:var(--warning)">Difficulty: Intermediate</p>
+    <h3>OSINT Challenge #2 — Domain Intelligence</h3>
+    <p>
+      Given a domain name, extract public WHOIS data, DNS records, and related public infrastructure information.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--warning)">Difficulty: Intermediate · Category: OSINT</p>
   </div>
+
   <div class="card">
-    <h3>Forensics Challenge #1</h3>
-    <p>Analyze a simple log file and extract key events.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:var(--accent)">Difficulty: Beginner</p>
+    <h3>Forensics Challenge #1 — Log Analysis</h3>
+    <p>
+      Analyze a simple server log file and answer questions about suspicious activity. 
+      Learn basic log reading skills.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Forensics</p>
   </div>
+
   <div class="card">
-    <h3>Coming Soon</h3>
-    <p>More interactive challenges and labs will be added regularly.</p>
+    <h3>Web Challenge #2 — Hidden Parameters</h3>
+    <p>
+      Discover how applications sometimes hide functionality in parameters and headers. 
+      Educational introduction to basic web testing.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--warning)">Difficulty: Intermediate · Category: Web</p>
   </div>
+</div>
+
+<div style="margin-top:40px;" class="card">
+  <h3>How Challenges Work</h3>
+  <p style="margin-top:8px;">
+    Each challenge teaches one or more real concepts. 
+    Flags and solutions will be added progressively. 
+    Focus on understanding the technique, not just finding the answer.
+  </p>
 </div>
 {% endblock %}

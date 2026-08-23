@@ -1,38 +1,83 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="disclaimer">Educational content only. Practice only on systems you own or have permission to test.</div>
+<div class="disclaimer">
+  Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
 
 <h1>Cybersecurity Learning Paths</h1>
-<p class="lead">Start from the basics and build real knowledge step by step.</p>
+<p class="lead">
+  Free structured learning paths to build real cybersecurity knowledge from the ground up. 
+  Start with the fundamentals and progress to practical ethical hacking skills.
+</p>
 
 <div class="ads-slot">Advertisement Space (AdSense Ready)</div>
 
 <div class="grid">
   <div class="card">
     <h3>1. Networking Fundamentals</h3>
-    <p>IP, TCP/UDP, DNS, HTTP, ports, and how the internet actually works.</p>
+    <p>
+      Understand how the internet works. Learn IP addresses, TCP vs UDP, ports, DNS, HTTP/HTTPS, 
+      and the OSI model. This is the foundation of almost every cybersecurity skill.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: Core Knowledge</p>
   </div>
+
   <div class="card">
-    <h3>2. Linux Basics</h3>
-    <p>Command line, file system, permissions, processes — essential for any hacker.</p>
+    <h3>2. Linux for Hackers</h3>
+    <p>
+      Master the command line, file permissions, processes, networking commands, 
+      and basic shell scripting. Most servers and hacking tools run on Linux.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: Essential</p>
   </div>
+
   <div class="card">
-    <h3>3. Web Security</h3>
-    <p>OWASP Top 10 concepts, XSS, SQLi basics, authentication flaws (theory + safe practice).</p>
+    <h3>3. Web Security Basics</h3>
+    <p>
+      Learn the OWASP Top 10 concepts including XSS, SQL Injection, CSRF, 
+      broken authentication, and security misconfigurations — from a defensive and educational view.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: High Demand</p>
   </div>
+
   <div class="card">
-    <h3>4. OSINT</h3>
-    <p>How to gather publicly available information legally and effectively.</p>
+    <h3>4. OSINT Techniques</h3>
+    <p>
+      Learn how to gather publicly available information legally. 
+      Username enumeration, domain intelligence, metadata, and social media public footprint analysis.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: Practical</p>
   </div>
+
   <div class="card">
     <h3>5. Cryptography Basics</h3>
-    <p>Hashing, encoding, symmetric vs asymmetric encryption, common mistakes.</p>
+    <p>
+      Understand hashing, encoding (Base64, Hex), symmetric vs asymmetric encryption, 
+      and common mistakes developers make with crypto.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: Core Knowledge</p>
   </div>
+
   <div class="card">
     <h3>6. Ethical Hacking Mindset</h3>
-    <p>Rules of engagement, responsible disclosure, and legal boundaries.</p>
+    <p>
+      Rules of engagement, responsible disclosure, legal boundaries, 
+      and how professional penetration testers think and operate.
+    </p>
+    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Status: Important</p>
   </div>
 </div>
 
-<p style="margin-top:40px;color:var(--muted)">More detailed lessons will be added continuously.</p>
+<div style="margin-top:50px;">
+  <h2 style="color:var(--accent);margin-bottom:16px;">Recommended Learning Order</h2>
+  <div class="card">
+    <p>
+      1. Networking Fundamentals → 2. Linux Basics → 3. Web Security → 
+      4. OSINT → 5. Cryptography → 6. Ethical Mindset + Challenges
+    </p>
+    <p style="margin-top:12px;color:var(--muted);font-size:0.9rem;">
+      Practice what you learn using the Challenges section. Theory without practice is incomplete.
+    </p>
+  </div>
+</div>
 {% endblock %}
