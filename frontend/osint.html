@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+  These tools only use publicly available information. You are fully responsible for legal use.
+</div>
+
+<h1>OSINT Tools</h1>
+<p class="lead">Search public information only. No private data.</p>
+
+<div class="ads-slot">Advertisement Space (AdSense Ready)</div>
+
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+  <button class="tab-btn active" onclick="showTool('username')">Username</button>
+  <button class="tab-btn" onclick="showTool('whois')">WHOIS</button>
+  <button class="tab-btn" onclick="showTool('dns')">DNS</button>
+  <button class="tab-btn" onclick="showTool('ip')">IP Info</button>
+</div>
+
+<div id="tool-username" class="tool-panel">
+  <div style="display:flex;gap:10px;margin-bottom:16px;">
+    <input id="uInput" placeholder="username" style="flex:1;padding:11px;background:#0a0f0c;border:1px solid #1a2e22;color:#00ff9d;border-radius:5px;font-family:inherit;" />
+    <button onclick="runUsername()" style="padding:0 18px;border:1px solid #00ff9d;background:transparent;color:#00ff9d;border-radius:5px;cursor:pointer;">SCAN</button>
+  </div>
+  <div id="uResult" class="card" style="min-height:100px;font-family:monospace;font-size:0.85rem;">Enter a username...</div>
+</div>
+
+<div id="tool-whois" class="tool-panel" style="display:none;">
+  <div style="display:flex;gap:10px;margin-bottom:16px;">
+    <input id="wInput" placeholder="example.com" style="flex:1;padding:11px;background:#0a0f0c;border:1px solid #1a2e22;color:#00ff9d;border-radius:5px;font-family:inherit;" />
+    <button onclick="runWhois()" style="padding:0 18px;border:1px solid #00ff9d;background:transparent;color:#00ff9d;border-radius:5px;cursor:pointer;">LOOKUP</button>
+  </div>
+  <pre id="wResult" class="card" style="min-height:100px;font-size:0.85rem;overflow:auto;">Enter a domain...</pre>
+</div>
+
+<div id="tool-dns" class="tool-panel" style="display:none;">
+  <div style="display:flex;gap:10px;margin-bottom:16px;">
+    <input id="dInput" placeholder="example.com" style="flex:1;padding:11px;background:#0a0f0c;border:1px solid #1a2e22;color:#00ff9d;border-radius:5px;font-family:inherit;" />
+    <button onclick="runDns()" style="padding:0 18px;border:1px solid #00ff9d;background:transparent;color:#00ff9d;border-radius:5px;cursor:pointer;">LOOKUP</button>
+  </div>
+  <pre id="dResult" class="card" style="min-height:100px;font-size:0.85rem;overflow:auto;">Enter a domain...</pre>
+</div>
+
+<div id="tool-ip" class="tool-panel" style="display:none;">
+  <div style="display:flex;gap:10px;margin-bottom:16px;">
+    <input id="iInput" placeholder="8.8.8.8" style="flex:1;padding:11px;background:#0a0f0c;border:1px solid #1a2e22;color:#00ff9d;border-radius:5px;font-family:inherit;" />
+    <button onclick="runIp()" style="padding:0 18px;border:1px solid #00ff9d;background:transparent;color:#00ff9d;border-radius:5px;cursor:pointer;">LOOKUP</button>
+  </div>
+  <pre id="iResult" class="card" style="min-height:100px;font-size:0.85rem;overflow:auto;">Enter an IP...</pre>
+</div>
+
+<style>
+  .tab-btn {
+    padding: 8px 14px;
+    background: #0a0f0c;
+    border: 1px solid #1a2e22;
+    color: #5a8f6a;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .tab-btn.active {
+    border-color: #00ff9d;
+    color: #00ff9d;
+  }
+</style>
+
+<script>
+  function showTool(name) {
+    document.querySelectorAll('.tool-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tool-' + name).style.display = 'block';
+    event.target.classList.add('active');
+  }
+
+  async function runUsername() {
+    const q = document.getElementById('uInput').value.trim();
+    if (!q) return;
+    const el = document.getElementById('uResult');
+    el.textContent = 'Scanning...';
+    try {
+      const res = await fetch('/api/username?q=' + encodeURIComponent(q));
+      const data = await res.json();
+      let html = 'TARGET: ' + data.username + '\n\n';
+      (data.results || []).forEach(r => {
+        html += r.platform.padEnd(12) + ' → ' + r.status + '\n' + r.url + '\n\n';
+      });
+      el.textContent = html;
+    } catch(e) { el.textContent = 'Error: ' + e.message; }
+  }
+
+  async function runWhois() {
+    const q = document.getElementById('wInput').value.trim();
+    if (!q) return;
+    const el = document.getElementById('wResult');
+    el.textContent = 'Loading...';
+    const res = await fetch('/api/whois?domain=' + encodeURIComponent(q));
+    const data = await res.json();
+    el.textContent = JSON.stringify(data, null, 2);
+  }
+
+  async function runDns() {
+    const q = document.getElementById('dInput').value.trim();
+    if (!q) return;
+    const el = document.getElementById('dResult');
+    el.textContent = 'Loading...';
+    const res = await fetch('/api/dns?domain=' + encodeURIComponent(q));
+    const data = await res.json();
+    el.textContent = JSON.stringify(data, null, 2);
+  }
+
+  async function runIp() {
+    const q = document.getElementById('iInput').value.trim();
+    if (!q) return;
+    const el = document.getElementById('iResult');
+    el.textContent = 'Loading...';
+    const res = await fetch('/api/ip?ip=' + encodeURIComponent(q));
+    const data = await res.json();
+    el.textContent = JSON.stringify(data, null, 2);
+  }
+</script>
+{% endblock %}
