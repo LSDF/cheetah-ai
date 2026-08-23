@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheetah OSINT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #12181f;
+      --border: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --danger: #f87171;
+      --success: #4ade80;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    .badge {
+      font-size: 0.7rem;
+      background: #1e293b;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .disclaimer {
+      background: #1c1917;
+      border: 1px solid #44403c;
+      color: #fbbf24;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .tab.active {
+      background: var(--accent);
+      color: #0b0f14;
+      border-color: var(--accent);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    input {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+    input:focus { border-color: var(--accent); }
+    button {
+      background: var(--accent);
+      color: #0b0f14;
+      border: none;
+      border-radius: 10px;
+      padding: 0 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .results {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      min-height: 120px;
+    }
+    .result-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .result-item:last-child { border-bottom: none; }
+    .found { color: var(--success); }
+    .notfound { color: var(--muted); }
+    .error { color: var(--danger); }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CHEETAH <span>OSINT</span></div>
+    <div class="badge">Public Information Only</div>
+  </header>
+
+  <main>
+    <div class="disclaimer">
+      ⚠️ This tool only accesses publicly available information. 
+      You are fully responsible for ensuring your use is legal. 
+      Do not use for stalking, harassment, or any illegal activity.
+    </div>
+
+    <h1>Open Source Intelligence</h1>
+    <p class="subtitle">Search publicly available information only.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="username">Username</div>
+      <div class="tab" data-tab="whois">WHOIS</div>
+      <div class="tab" data-tab="dns">DNS</div>
+      <div class="tab" data-tab="ip">IP Info</div>
+    </div>
+
+    <!-- Username Panel -->
+    <div class="panel active" id="panel-username">
+      <div class="search-box">
+        <input type="text" id="usernameInput" placeholder="Enter username..." />
+        <button onclick="runUsername()">Search</button>
+      </div>
+      <div class="results" id="usernameResults">Enter a username to check public presence across platforms.</div>
+    </div>
+
+    <!-- WHOIS Panel -->
+    <div class="panel" id="panel-whois">
+      <div class="search-box">
+        <input type="text" id="whoisInput" placeholder="example.com" />
+        <button onclick="runWhois()">Lookup</button>
+      </div>
+      <div class="results" id="whoisResults">Enter a domain for public WHOIS information.</div>
+    </div>
+
+    <!-- DNS Panel -->
+    <div class="panel" id="panel-dns">
+      <div class="search-box">
+        <input type="text" id="dnsInput" placeholder="example.com" />
+        <button onclick="runDns()">Lookup</button>
+      </div>
+      <div class="results" id="dnsResults">Enter a domain for DNS records.</div>
+    </div>
+
+    <!-- IP Panel -->
+    <div class="panel" id="panel-ip">
+      <div class="search-box">
+        <input type="text" id="ipInput" placeholder="8.8.8.8" />
+        <button onclick="runIp()">Lookup</button>
+      </div>
+      <div class="results" id="ipResults">Enter an IP address for public information.</div>
+    </div>
+  </main>
+
+  <footer>
+    Cheetah OSINT · Public information only · Use responsibly
+  </footer>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    async function runUsername() {
+      const q = document.getElementById('usernameInput').value.trim();
+      if (!q) return;
+      const el = document.getElementById('usernameResults');
+      el.textContent = 'Searching public platforms...';
+      try {
+        const res = await fetch('/username?q=' + encodeURIComponent(q));
+        const data = await res.json();
+        let html = `Username: ${data.username}\n\n`;
+        data.results.forEach(r => {
+          const cls = r.status === 'Found' ? 'found' : (r.status.includes('Error') ? 'error' : 'notfound');
+          html += `${r.platform.padEnd(12)} → ${r.status}  ${r.url}\n`;
+        });
+        el.textContent = html;
+      } catch (e) {
+        el.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    async function runWhois() {
+      const q = document.getElementById('whoisInput').value.trim();
+      if (!q) return;
+      const el = document.getElementById('whoisResults');
+      el.textContent = 'Looking up WHOIS...';
+      try {
+        const res = await fetch('/whois?domain=' + encodeURIComponent(q));
+        const data = await res.json();
+        el.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        el.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    async function runDns() {
+      const q = document.getElementById('dnsInput').value.trim();
+      if (!q) return;
+      const el = document.getElementById('dnsResults');
+      el.textContent = 'Looking up DNS records...';
+      try {
+        const res = await fetch('/dns?domain=' + encodeURIComponent(q));
+        const data = await res.json();
+        el.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        el.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    async function runIp() {
+      const q = document.getElementById('ipInput').value.trim();
+      if (!q) return;
+      const el = document.getElementById('ipResults');
+      el.textContent = 'Looking up IP information...';
+      try {
+        const res = await fetch('/ip?ip=' + encodeURIComponent(q));
+        const data = await res.json();
+        el.textContent = JSON.stringify(data, null, 2);
+      } catch (e) {
+        el.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    // Enter key support
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const id = input.id;
+          if (id === 'usernameInput') runUsername();
+          if (id === 'whoisInput') runWhois();
+          if (id === 'dnsInput') runDns();
+          if (id === 'ipInput') runIp();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
