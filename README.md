@@ -1,13 +1,13 @@
-# Cheetah OSINT
+# Cheetah Cyber
 
-Legal Open Source Intelligence tools.
-Only uses publicly available information.
+Educational cybersecurity platform with learning paths, ethical hacking challenges, and OSINT tools.
 
 ## Features
-- Username search (public profiles)
-- WHOIS lookup
-- DNS records
-- IP information
+- Learn cybersecurity
+- Practice challenges
+- Public OSINT tools
+- SEO friendly
+- Google AdSense ready
 
 ## Deploy on Railway
 1. Push to GitHub

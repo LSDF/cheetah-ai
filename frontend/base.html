@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Cheetah Cyber" />
+  <link rel="canonical" href="{{ request.url }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:type" content="website" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020403;
+      --surface: #0a0f0c;
+      --border: #1a2e22;
+      --text: #c8facc;
+      --muted: #5a8f6a;
+      --accent: #00ff9d;
+      --danger: #ff4d4d;
+      --warning: #ffcc00;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(ellipse at top, #0a1f14 0%, transparent 55%),
+        linear-gradient(rgba(0,255,157,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,157,0.025) 1px, transparent 1px);
+      background-size: 100% 100%, 50px 50px, 50px 50px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(0,255,157,0.4);
+    }
+    .logo span { color: #fff; }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 0.9rem;
+    }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .disclaimer {
+      background: rgba(255,204,0,0.07);
+      border: 1px solid rgba(255,204,0,0.25);
+      color: var(--warning);
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-shadow: 0 0 18px rgba(0,255,157,0.25);
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      max-width: 700px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .card p { color: var(--muted); font-size: 0.92rem; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 9px 18px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 5px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* AdSense placeholder */
+    .ads-slot {
+      background: #0d1510;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 30px 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="/" class="logo">CHEETAH <span>CYBER</span></a>
+      <nav class="nav-links">
+        <a href="/" class="{% if request.url.path == '/' %}active{% endif %}">Home</a>
+        <a href="/learn" class="{% if request.url.path == '/learn' %}active{% endif %}">Learn</a>
+        <a href="/challenges" class="{% if request.url.path == '/challenges' %}active{% endif %}">Challenges</a>
+        <a href="/osint" class="{% if request.url.path == '/osint' %}active{% endif %}">OSINT Tools</a>
+        <a href="/about" class="{% if request.url.path == '/about' %}active{% endif %}">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>Cheetah Cyber · Educational Cybersecurity Platform</p>
+    <p style="margin-top:6px">Public information & simulated challenges only · Use responsibly</p>
+  </footer>
+</body>
+</html>
