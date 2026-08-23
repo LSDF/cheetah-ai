@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+  Educational platform only. All challenges and tools are designed for legal learning. You are responsible for your actions.
+</div>
+
+<h1>Learn Ethical Hacking & Cybersecurity</h1>
+<p class="lead">
+  Free platform to study cybersecurity, practice ethical hacking challenges, and use public OSINT tools. 
+  Built for beginners and intermediate learners.
+</p>
+
+<div class="ads-slot">
+  <!-- Google AdSense code can be placed here later -->
+  Advertisement Space (AdSense Ready)
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Learn</h3>
+    <p>Structured lessons on networking, web security, cryptography, OSINT, and ethical hacking fundamentals.</p>
+    <a href="/learn" class="btn">Start Learning →</a>
+  </div>
+  <div class="card">
+    <h3>Challenges</h3>
+    <p>Practice with beginner and intermediate CTF-style challenges. Improve real skills in a safe environment.</p>
+    <a href="/challenges" class="btn">View Challenges →</a>
+  </div>
+  <div class="card">
+    <h3>OSINT Tools</h3>
+    <p>Public information tools: username search, WHOIS, DNS, and IP lookup. Legal public data only.</p>
+    <a href="/osint" class="btn">Open Tools →</a>
+  </div>
+  <div class="card">
+    <h3>About</h3>
+    <p>Learn about the platform mission, rules, and how we keep everything educational and legal.</p>
+    <a href="/about" class="btn">Read More →</a>
+  </div>
+</div>
+{% endblock %}
