@@ -125,18 +125,9 @@
       font-size: 0.85rem;
       white-space: pre-wrap;
       min-height: 120px;
+      overflow-x: auto;
     }
-    .result-item {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .result-item:last-child { border-bottom: none; }
-    .found { color: var(--success); }
-    .notfound { color: var(--muted); }
-    .error { color: var(--danger); }
+    .error-text { color: var(--danger); }
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -222,6 +213,10 @@
       });
     });
 
+    function showError(el, msg) {
+      el.innerHTML = `<span class="error-text">Error: ${msg}</span>`;
+    }
+
     async function runUsername() {
       const q = document.getElementById('usernameInput').value.trim();
       if (!q) return;
@@ -230,14 +225,24 @@
       try {
         const res = await fetch('/username?q=' + encodeURIComponent(q));
         const data = await res.json();
+
+        if (!res.ok) {
+          showError(el, data.detail || data.error || 'Request failed');
+          return;
+        }
+
+        if (!data.results || !Array.isArray(data.results)) {
+          el.textContent = JSON.stringify(data, null, 2);
+          return;
+        }
+
         let html = `Username: ${data.username}\n\n`;
         data.results.forEach(r => {
-          const cls = r.status === 'Found' ? 'found' : (r.status.includes('Error') ? 'error' : 'notfound');
-          html += `${r.platform.padEnd(12)} → ${r.status}  ${r.url}\n`;
+          html += `${(r.platform || '').padEnd(12)} → ${r.status || 'Unknown'}  ${r.url || ''}\n`;
         });
         el.textContent = html;
       } catch (e) {
-        el.textContent = 'Error: ' + e.message;
+        showError(el, e.message);
       }
     }
 
@@ -249,9 +254,13 @@
       try {
         const res = await fetch('/whois?domain=' + encodeURIComponent(q));
         const data = await res.json();
+        if (!res.ok) {
+          showError(el, data.detail || data.error || 'Request failed');
+          return;
+        }
         el.textContent = JSON.stringify(data, null, 2);
       } catch (e) {
-        el.textContent = 'Error: ' + e.message;
+        showError(el, e.message);
       }
     }
 
@@ -263,9 +272,13 @@
       try {
         const res = await fetch('/dns?domain=' + encodeURIComponent(q));
         const data = await res.json();
+        if (!res.ok) {
+          showError(el, data.detail || data.error || 'Request failed');
+          return;
+        }
         el.textContent = JSON.stringify(data, null, 2);
       } catch (e) {
-        el.textContent = 'Error: ' + e.message;
+        showError(el, e.message);
       }
     }
 
@@ -277,9 +290,13 @@
       try {
         const res = await fetch('/ip?ip=' + encodeURIComponent(q));
         const data = await res.json();
+        if (!res.ok) {
+          showError(el, data.detail || data.error || 'Request failed');
+          return;
+        }
         el.textContent = JSON.stringify(data, null, 2);
       } catch (e) {
-        el.textContent = 'Error: ' + e.message;
+        showError(el, e.message);
       }
     }
 
