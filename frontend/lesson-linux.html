@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
+
+<p style="margin-bottom:20px;"><a href="/learn">&larr; Back to Learning Paths</a></p>
+
+<h1>Lesson 2 &mdash; Linux for Hackers</h1>
+<p class="lead">
+Most servers, security tools, and hacking distributions run on Linux. Getting comfortable in the terminal is one of the highest value skills you can build.
+</p>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Why Linux Matters</h3>
+<p style="margin-top:12px;">
+The vast majority of web servers, cloud infrastructure, and penetration testing tools (like Kali Linux) run on Linux. If you cannot navigate a Linux terminal confidently, most security tooling will be out of reach.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>File System Structure</h3>
+<p style="margin-top:12px;">
+Linux organizes everything as files under a single root directory <code>/</code>. Key locations include:
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li><code>/etc</code> &mdash; system configuration files</li>
+<li><code>/var</code> &mdash; logs and variable data</li>
+<li><code>/home</code> &mdash; personal user directories</li>
+<li><code>/tmp</code> &mdash; temporary files, cleared on reboot</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Permissions</h3>
+<p style="margin-top:12px;">
+Every file has read, write, and execute permissions for the owner, the group, and everyone else. Permissions are commonly shown as a string like <code>rwxr-xr--</code> or a number like <code>755</code>. Misconfigured permissions are one of the most common real world security mistakes.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Essential Commands</h3>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li><code>ls</code> &mdash; list files in a directory</li>
+<li><code>cd</code> &mdash; change directory</li>
+<li><code>cat</code> &mdash; print a file's contents</li>
+<li><code>grep</code> &mdash; search text inside files</li>
+<li><code>find</code> &mdash; locate files by name or attribute</li>
+<li><code>ps</code> &mdash; list running processes</li>
+<li><code>netstat</code> &mdash; view network connections</li>
+</ul>
+</div>
+                                                                                                                                                                                                                                                                                                                                                 
+<div class="card" style="margin-bottom:24px;">
+<h3>Users and Privileges</h3>
+<p style="margin-top:12px;">
+Linux is a multi user system. Regular users have limited permissions, while the <code>root</code> user can do anything on the system. Commands can be run with elevated privileges using <code>sudo</code>.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Why Running as Root Is Dangerous</h3>
+<p style="margin-top:12px;color:var(--muted);">
+When you run everyday tasks as root, a single mistake or a single compromised program can damage or take over the entire system. Professionals use a limited account and only elevate to root when necessary, and only for the specific command that needs it.
+</p>
+</div>
+
+<div class="card" style="margin-top:30px;">
+<h3>Next Step</h3>
+<p style="margin-top:10px;">
+<a href="/learn/web-security-basics" class="btn">Continue to Lesson 3: Web Security Basics &rarr;</a>
+</p>
+</div>
+{% endblock %}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
