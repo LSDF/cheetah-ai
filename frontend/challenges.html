@@ -6,72 +6,101 @@
 
 <h1>Ethical Hacking Challenges</h1>
 <p class="lead">
-  Practice real skills in a safe environment. Each challenge teaches a specific concept used in professional cybersecurity.
+  Practice what you learn. Each challenge has a clear objective and teaches a real skill used in cybersecurity.
 </p>
 
 <div class="ads-slot">Advertisement Space (AdSense Ready)</div>
 
-<div class="grid">
-  <div class="card">
-    <h3>OSINT Challenge #1 — Public Footprint</h3>
-    <p>
-      A fictional person left public traces online. 
-      Your goal is to find their username on at least 3 platforms using only public information.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: OSINT</p>
-  </div>
-
-  <div class="card">
-    <h3>Web Challenge #1 — View Source</h3>
-    <p>
-      Something is hidden in the HTML source of a simple page. 
-      Learn how developers accidentally leave information in plain sight.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Web</p>
-  </div>
-
-  <div class="card">
-    <h3>Crypto Challenge #1 — Classic Encoding</h3>
-    <p>
-      Decode a series of classic encodings (Base64, Hex, ROT13) to recover the flag. 
-      Perfect introduction to data encoding.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Cryptography</p>
-  </div>
-
-  <div class="card">
-    <h3>OSINT Challenge #2 — Domain Intelligence</h3>
-    <p>
-      Given a domain name, extract public WHOIS data, DNS records, and related public infrastructure information.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--warning)">Difficulty: Intermediate · Category: OSINT</p>
-  </div>
-
-  <div class="card">
-    <h3>Forensics Challenge #1 — Log Analysis</h3>
-    <p>
-      Analyze a simple server log file and answer questions about suspicious activity. 
-      Learn basic log reading skills.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--accent)">Difficulty: Beginner · Category: Forensics</p>
-  </div>
-
-  <div class="card">
-    <h3>Web Challenge #2 — Hidden Parameters</h3>
-    <p>
-      Discover how applications sometimes hide functionality in parameters and headers. 
-      Educational introduction to basic web testing.
-    </p>
-    <p style="margin-top:10px;font-size:0.85rem;color:var(--warning)">Difficulty: Intermediate · Category: Web</p>
-  </div>
+<!-- Challenge 1 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 1 — OSINT: Public Username Hunt</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Find public profiles of a fictional username across multiple platforms.</p>
+  <p style="margin-top:8px;"><strong>Target Username:</strong> <code style="color:var(--accent);">cheetah_demo_user</code></p>
+  <p style="margin-top:8px;"><strong>What you should do:</strong></p>
+  <ul style="margin:8px 0 0 20px;color:var(--muted);">
+    <li>Go to the OSINT Tools page</li>
+    <li>Search the username</li>
+    <li>Note which platforms return “Found / Possible”</li>
+    <li>Visit the public links and observe what information is visible</li>
+  </ul>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--accent);">Difficulty: Beginner | Category: OSINT</p>
 </div>
 
-<div style="margin-top:40px;" class="card">
-  <h3>How Challenges Work</h3>
-  <p style="margin-top:8px;">
-    Each challenge teaches one or more real concepts. 
-    Flags and solutions will be added progressively. 
-    Focus on understanding the technique, not just finding the answer.
+<!-- Challenge 2 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 2 — Web: View Source Secrets</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Learn how information can be left in HTML source code.</p>
+  <p style="margin-top:8px;"><strong>Task:</strong></p>
+  <ul style="margin:8px 0 0 20px;color:var(--muted);">
+    <li>Create a simple HTML file on your computer</li>
+    <li>Add a hidden HTML comment containing a fake flag: <code>&lt;!-- flag{source_is_useful} --&gt;</code></li>
+    <li>Open the file in a browser and view the page source</li>
+    <li>Practice finding the comment</li>
+  </ul>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--accent);">Difficulty: Beginner | Category: Web</p>
+</div>
+
+<!-- Challenge 3 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 3 — Crypto: Decode the Message</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Practice classic encoding techniques.</p>
+  <p style="margin-top:8px;"><strong>Encoded message:</strong></p>
+  <pre style="background:#0d1510;padding:12px;border-radius:6px;margin-top:8px;color:var(--accent);overflow-x:auto;">VGhpcyBpcyBhIHNpbXBsZSBCYXNlNjQgbWVzc2FnZS4=</pre>
+  <p style="margin-top:10px;color:var(--muted);">
+    Decode the Base64 string above. Then try encoding your own short message and decoding it back.
+  </p>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--accent);">Difficulty: Beginner | Category: Cryptography</p>
+</div>
+
+<!-- Challenge 4 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 4 — OSINT: Domain Intelligence</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Gather public information about a domain.</p>
+  <p style="margin-top:8px;"><strong>Target:</strong> <code style="color:var(--accent);">example.com</code></p>
+  <p style="margin-top:8px;"><strong>Tasks:</strong></p>
+  <ul style="margin:8px 0 0 20px;color:var(--muted);">
+    <li>Perform a WHOIS lookup</li>
+    <li>Check DNS records (A, MX, NS, TXT)</li>
+    <li>Write down the registrar and name servers</li>
+    <li>Note any interesting public TXT records</li>
+  </ul>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--warning);">Difficulty: Intermediate | Category: OSINT</p>
+</div>
+
+<!-- Challenge 5 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 5 — Forensics: Simple Log Reading</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Practice reading basic log entries.</p>
+  <p style="margin-top:8px;"><strong>Sample log line:</strong></p>
+  <pre style="background:#0d1510;padding:12px;border-radius:6px;margin-top:8px;color:var(--accent);overflow-x:auto;font-size:0.8rem;">2026-08-20 14:22:01 192.168.1.50 GET /admin 403 Mozilla/5.0</pre>
+  <p style="margin-top:10px;color:var(--muted);">
+    Questions to answer:<br>
+    • What IP made the request?<br>
+    • What path was requested?<br>
+    • What was the response code?<br>
+    • What does 403 usually mean?
+  </p>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--accent);">Difficulty: Beginner | Category: Forensics</p>
+</div>
+
+<!-- Challenge 6 -->
+<div class="card" style="margin-bottom:22px;">
+  <h3 style="color:var(--accent);">Challenge 6 — Mindset: Scope & Permission</h3>
+  <p style="margin-top:8px;"><strong>Objective:</strong> Understand the most important rule in ethical hacking.</p>
+  <p style="margin-top:8px;color:var(--muted);">
+    Write down in your own words:<br>
+    1. What “permission” means in cybersecurity<br>
+    2. Why attacking systems without authorization is illegal<br>
+    3. What you should do if you accidentally find a vulnerability on a real website
+  </p>
+  <p style="margin-top:10px;font-size:0.85rem;color:var(--accent);">Difficulty: Beginner | Category: Ethics</p>
+</div>
+
+<div class="card" style="margin-top:30px;">
+  <h3>How to Use These Challenges</h3>
+  <p style="margin-top:10px;">
+    Work through them in order. Use the Learn section for theory and the OSINT Tools for practical searches. 
+    Focus on understanding the concept behind each challenge.
   </p>
 </div>
 {% endblock %}
