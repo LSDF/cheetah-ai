@@ -1,127 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="disclaimer">
-  Educational content only. Always practice on systems you own or have explicit permission to test.
+Educational content only. Always practice on systems you own or have explicit permission to test.
 </div>
 
 <h1>Cybersecurity Learning Paths</h1>
 <p class="lead">
-  Complete beginner-friendly learning paths. Read the lessons in order and practice what you learn in the Challenges section.
+Complete beginner-friendly learning paths. Click a topic to open the full lesson, then practice what you learn in the Challenges section.
 </p>
 
 <div class="ads-slot">Advertisement Space (AdSense Ready)</div>
 
-<!-- Lesson 1 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 1 — Networking Fundamentals</h3>
-  <p style="margin-top:12px;">
-    Everything on the internet moves through networks. Before you can understand hacking or defense, you must understand how data travels.
-  </p>
-  <p style="margin-top:10px;"><strong>What you will learn:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>What an IP address is and why it matters</li>
-    <li>Difference between TCP and UDP</li>
-    <li>Common ports (80, 443, 22, 53, 3389...)</li>
-    <li>How DNS turns names into IP addresses</li>
-    <li>HTTP vs HTTPS</li>
-  </ul>
-  <p style="margin-top:12px;color:var(--muted);font-size:0.9rem;">
-    Practice tip: Use the OSINT Tools → DNS and IP lookup to explore real domains and IPs.
-  </p>
-</div>
+<div class="grid">
 
-<!-- Lesson 2 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 2 — Linux Basics for Security</h3>
-  <p style="margin-top:12px;">
-    Most servers and security tools run on Linux. You need to be comfortable in the terminal.
-  </p>
-  <p style="margin-top:10px;"><strong>Key topics:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>File system structure (/etc, /var, /home, /tmp)</li>
-    <li>Permissions (read, write, execute)</li>
-    <li>Basic commands: ls, cd, cat, grep, find, ps, netstat</li>
-    <li>Users and privileges</li>
-    <li>Why “running as root” is dangerous</li>
-  </ul>
-</div>
+<a href="/learn/networking-fundamentals" class="card" style="text-decoration:none;display:block;">
+<h3>1. Networking Fundamentals</h3>
+<p style="margin-top:10px;">Understand how the internet works. Learn IP addresses, TCP vs UDP, ports, DNS, HTTP/HTTPS, and the OSI model. This is the foundation of almost every cybersecurity skill.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: Core Knowledge</p>
+</a>
 
-<!-- Lesson 3 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 3 — Web Security Fundamentals</h3>
-  <p style="margin-top:12px;">
-    Most modern attacks target web applications. Understanding how websites work is critical.
-  </p>
-  <p style="margin-top:10px;"><strong>Core concepts:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>How browsers talk to servers</li>
-    <li>What cookies and sessions are</li>
-    <li>Introduction to OWASP Top 10</li>
-    <li>XSS and SQL Injection (concept only)</li>
-    <li>Why input validation matters</li>
-  </ul>
-  <p style="margin-top:12px;color:var(--muted);font-size:0.9rem;">
-    Never test these ideas on real websites without permission.
-  </p>
-</div>
+<a href="/learn/linux-for-hackers" class="card" style="text-decoration:none;display:block;">
+<h3>2. Linux for Hackers</h3>
+<p style="margin-top:10px;">Master the command line, file permissions, processes, networking commands, and basic shell scripting. Most servers and hacking tools run on Linux.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: Essential</p>
+</a>
 
-<!-- Lesson 4 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 4 — OSINT (Open Source Intelligence)</h3>
-  <p style="margin-top:12px;">
-    OSINT is the art of collecting publicly available information. It is legal when done correctly and extremely useful.
-  </p>
-  <p style="margin-top:10px;"><strong>You will learn:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>Username enumeration across platforms</li>
-    <li>Domain and WHOIS intelligence</li>
-    <li>DNS and infrastructure mapping</li>
-    <li>Public social media footprint analysis</li>
-    <li>How to stay within legal boundaries</li>
-  </ul>
-  <p style="margin-top:12px;">
-    <a href="/osint" class="btn">Open OSINT Tools →</a>
-  </p>
-</div>
+<a href="/learn/web-security-basics" class="card" style="text-decoration:none;display:block;">
+<h3>3. Web Security Basics</h3>
+<p style="margin-top:10px;">Learn the OWASP Top 10 concepts including XSS, SQL Injection, CSRF, broken authentication, and security misconfigurations &mdash; from a defensive and educational view.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: High Demand</p>
+</a>
 
-<!-- Lesson 5 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 5 — Cryptography Basics</h3>
-  <p style="margin-top:12px;">
-    Cryptography protects data. Understanding the basics helps you recognize weak implementations.
-  </p>
-  <p style="margin-top:10px;"><strong>Topics:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>Encoding vs Encryption vs Hashing</li>
-    <li>Base64, Hex, URL encoding</li>
-    <li>Hashing (MD5, SHA family) – one way functions</li>
-    <li>Symmetric vs Asymmetric encryption (simple explanation)</li>
-  </ul>
-</div>
+<a href="/learn/osint-techniques" class="card" style="text-decoration:none;display:block;">
+<h3>4. OSINT Techniques</h3>
+<p style="margin-top:10px;">Learn how to gather publicly available information legally. Username enumeration, domain intelligence, DNS mapping, and social media public footprint analysis.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: Practical</p>
+</a>
 
-<!-- Lesson 6 -->
-<div class="card" style="margin-bottom:24px;">
-  <h3 style="color:var(--accent);">Lesson 6 — Ethical Hacking Mindset</h3>
-  <p style="margin-top:12px;">
-    Tools are useless without the right mindset and legal understanding.
-  </p>
-  <p style="margin-top:10px;"><strong>Key principles:</strong></p>
-  <ul style="margin:8px 0 0 20px;color:var(--muted);">
-    <li>Only test systems you own or have written permission to test</li>
-    <li>Responsible disclosure</li>
-    <li>Scope is everything</li>
-    <li>Document everything</li>
-    <li>Think like an attacker, act like a professional</li>
-  </ul>
+<a href="/learn/cryptography-basics" class="card" style="text-decoration:none;display:block;">
+<h3>5. Cryptography Basics</h3>
+<p style="margin-top:10px;">Understand hashing, encoding (Base64, Hex), symmetric vs asymmetric encryption, and common mistakes developers make with crypto.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: Core Knowledge</p>
+</a>
+
+<a href="/learn/ethical-hacking-mindset" class="card" style="text-decoration:none;display:block;">
+<h3>6. Ethical Hacking Mindset</h3>
+<p style="margin-top:10px;">Rules of engagement, responsible disclosure, legal boundaries, and how professional penetration testers think and operate.</p>
+<p style="margin-top:14px;color:var(--accent);font-size:0.85rem;">Status: Important</p>
+</a>
+
 </div>
 
 <div class="card" style="margin-top:30px;">
-  <h3>Recommended Order</h3>
-  <p style="margin-top:10px;">
-    1. Networking → 2. Linux → 3. Web Security → 4. OSINT → 5. Cryptography → 6. Ethical Mindset
-  </p>
-  <p style="margin-top:10px;">
-    After each lesson, go to the <a href="/challenges">Challenges</a> page and practice.
-  </p>
+<h3>Recommended Order</h3>
+<p style="margin-top:10px;">
+1. Networking &rarr; 2. Linux &rarr; 3. Web Security &rarr; 4. OSINT &rarr; 5. Cryptography &rarr; 6. Ethical Mindset
+</p>
+<p style="margin-top:10px;">
+After each lesson, go to the <a href="/challenges">Challenges</a> page and practice.
+</p>
 </div>
 {% endblock %}
