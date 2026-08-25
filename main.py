@@ -36,6 +36,55 @@ async def learn(request: Request):
         "description": "Structured cybersecurity learning paths covering networking, web security, OSINT, cryptography, and ethical hacking."
     })
 
+@app.get("/learn/networking-fundamentals", response_class=HTMLResponse)
+async def lesson_networking(request: Request):
+    return templates.TemplateResponse("lesson-networking.html", {
+        "request": request,
+        "title": "Networking Fundamentals - Cheetah Cyber",
+        "description": "Learn how the internet works: IP addresses, TCP vs UDP, ports, DNS, and HTTP/HTTPS."
+    })
+
+@app.get("/learn/linux-for-hackers", response_class=HTMLResponse)
+async def lesson_linux(request: Request):
+    return templates.TemplateResponse("lesson-linux.html", {
+        "request": request,
+        "title": "Linux for Hackers - Cheetah Cyber",
+        "description": "Master the Linux command line, file permissions, and essential commands used in security work."
+    })
+
+@app.get("/learn/web-security-basics", response_class=HTMLResponse)
+async def lesson_web_security(request: Request):
+    return templates.TemplateResponse("lesson-web-security.html", {
+        "request": request,
+        "title": "Web Security Basics - Cheetah Cyber",
+        "description": "Learn OWASP Top 10 concepts, cookies and sessions, and why input validation matters."
+    })
+
+@app.get("/learn/osint-techniques", response_class=HTMLResponse)
+async def lesson_osint(request: Request):
+    return templates.TemplateResponse("lesson-osint.html", {
+        "request": request,
+        "title": "OSINT Techniques - Cheetah Cyber",
+        "description": "Learn how to gather publicly available information legally and ethically."
+    })
+
+@app.get("/learn/cryptography-basics", response_class=HTMLResponse)
+async def lesson_cryptography(request: Request):
+    return templates.TemplateResponse("lesson-cryptography.html", {
+        "request": request,
+        "title": "Cryptography Basics - Cheetah Cyber",
+        "description": "Understand encoding, hashing, and symmetric vs asymmetric encryption."
+    })
+
+@app.get("/learn/ethical-hacking-mindset", response_class=HTMLResponse)
+async def lesson_ethical_mindset(request: Request):
+    return templates.TemplateResponse("lesson-ethical-mindset.html", {
+        "request": request,
+        "title": "Ethical Hacking Mindset - Cheetah Cyber",
+        "description": "Rules of engagement, responsible disclosure, and the professional mindset behind ethical hacking."
+    })
+
+
 @app.get("/challenges", response_class=HTMLResponse)
 async def challenges(request: Request):
     return templates.TemplateResponse("challenges.html", {
