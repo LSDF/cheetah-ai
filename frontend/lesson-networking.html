@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
+
+<p style="margin-bottom:20px;"><a href="/learn">&larr; Back to Learning Paths</a></p>
+
+<h1>Lesson 1 &mdash; Networking Fundamentals</h1>
+<p class="lead">
+Everything you do online depends on networks moving data correctly. This lesson builds the foundation you need before you can understand hacking or defense.
+</p>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Why Networking Matters</h3>
+<p style="margin-top:12px;">
+Every attack and every defense happens somewhere along the path data takes between two computers. Before you can secure a system or understand how it might be attacked, you need to know how machines find each other and exchange information.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>IP Addresses</h3>
+<p style="margin-top:12px;">
+An IP address is a unique numeric label assigned to a device on a network so other devices know where to send data.
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>IPv4 addresses look like 192.168.1.10 and are the most common format in use today</li>
+<li>IPv6 addresses are longer and were introduced because IPv4 addresses were running out</li>
+<li>Private addresses (like 192.168.x.x or 10.x.x.x) are used inside home and office networks</li>
+<li>Public addresses are visible to the whole internet</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>TCP vs UDP</h3>
+<p style="margin-top:12px;">
+These are the two main ways data is transported across a network.
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>TCP is connection based and guarantees delivery and order &mdash; used for web browsing, email, and file transfer</li>
+<li>UDP is connectionless and faster but does not guarantee delivery &mdash; used for video calls, gaming, and DNS lookups</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Common Ports</h3>
+<p style="margin-top:12px;color:var(--muted);">
+A port is like a numbered door on a device that a specific service listens on.
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>Port 80 &mdash; HTTP (unencrypted web traffic)</li>
+<li>Port 443 &mdash; HTTPS (encrypted web traffic)</li>
+<li>Port 22 &mdash; SSH (secure remote login)</li>
+<li>Port 53 &mdash; DNS (domain name lookups)</li>
+<li>Port 3389 &mdash; RDP (Windows remote desktop)</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>How DNS Works</h3>
+<p style="margin-top:12px;">
+DNS (Domain Name System) translates human friendly names like example.com into the IP address computers actually use to connect. Without DNS, you would need to memorize numeric addresses for every website you visit.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>HTTP vs HTTPS</h3>
+<p style="margin-top:12px;">
+HTTP is the protocol browsers use to request and receive web pages. HTTPS is the same protocol wrapped in encryption (TLS), so data cannot be read or modified by anyone intercepting the connection. Always look for HTTPS when entering sensitive information on a site.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Practice Tip</h3>
+<p style="margin-top:12px;color:var(--muted);font-size:0.95rem;">
+Use the <a href="/osint">OSINT Tools</a> page to try DNS and IP lookups on domains you own or that are publicly documented, so you can see these concepts in action.
+</p>
+</div>
+
+<div class="card" style="margin-top:30px;">
+<h3>Next Step</h3>
+<p style="margin-top:10px;">
+<a href="/learn/linux-for-hackers" class="btn">Continue to Lesson 2: Linux for Hackers &rarr;</a>
+</p>
+</div>
+{% endblock %}
