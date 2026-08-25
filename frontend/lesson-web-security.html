@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
+
+<p style="margin-bottom:20px;"><a href="/learn">&larr; Back to Learning Paths</a></p>
+
+<h1>Lesson 3 &mdash; Web Security Basics</h1>
+<p class="lead">
+Most modern attacks target web applications. Understanding how websites work, from a defensive and educational point of view, is essential for anyone in security.
+</p>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>How Browsers Talk to Servers</h3>
+<p style="margin-top:12px;">
+When you visit a website, your browser sends an HTTP request to a server, and the server sends back a response containing HTML, CSS, JavaScript, and data. Every button click, form submission, and page load is built on this request and response cycle.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Cookies and Sessions</h3>
+<p style="margin-top:12px;">
+Because HTTP does not remember who you are between requests, sites use cookies to store a small session identifier in your browser. The server uses that identifier to know you are logged in. Stealing or forging session identifiers is one of the oldest classes of web attack, which is why secure cookie flags and HTTPS matter.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Introduction to the OWASP Top 10</h3>
+<p style="margin-top:12px;">
+The OWASP Top 10 is a well known, regularly updated list of the most common and impactful web application security risks. As a beginner, you should recognize these categories conceptually:
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>Injection flaws &mdash; untrusted input being interpreted as code (such as SQL Injection)</li>
+<li>Broken authentication &mdash; weaknesses in login and session handling</li>
+<li>Cross-Site Scripting (XSS) &mdash; untrusted input being rendered as executable script in a victim's browser</li>
+<li>Security misconfiguration &mdash; default settings, exposed debug pages, or unnecessary features left enabled</li>
+<li>Using components with known vulnerabilities &mdash; outdated libraries and frameworks</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Why Input Validation Matters</h3>
+<p style="margin-top:12px;color:var(--muted);">
+Almost every vulnerability on this list traces back to a server trusting data it should have validated first. Treating all user input as untrusted, and validating it on the server rather than only in the browser, is the single most important defensive habit in web security.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>A Note on Ethics</h3>
+<p style="margin-top:12px;color:var(--muted);font-size:0.95rem;">
+Never test these ideas on real websites without explicit written permission. Practice only in the Challenges section of this site or on systems you own or are authorized to test.
+</p>
+</div>
+
+<div class="card" style="margin-top:30px;">
+<h3>Next Step</h3>
+<p style="margin-top:10px;">
+<a href="/learn/osint-techniques" class="btn">Continue to Lesson 4: OSINT Techniques &rarr;</a>
+</p>
+</div>
+{% endblock %}
