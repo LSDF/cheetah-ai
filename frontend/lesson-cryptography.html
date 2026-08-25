@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
+
+<p style="margin-bottom:20px;"><a href="/learn">&larr; Back to Learning Paths</a></p>
+
+<h1>Lesson 5 &mdash; Cryptography Basics</h1>
+<p class="lead">
+Cryptography protects data. Understanding the basics helps you recognize weak implementations and communicate clearly with developers about security requirements.
+</p>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Encoding vs Encryption vs Hashing</h3>
+<p style="margin-top:12px;">
+These three terms are often confused but mean very different things.
+</p>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>Encoding transforms data into a different format so it can be transmitted safely. It is reversible and uses no secret key.</li>
+<li>Encryption transforms data so it cannot be read without a secret key, and can be reversed with the correct key.</li>
+<li>Hashing produces a fixed size fingerprint of data. It is one-way and cannot be reversed back into the original data.</li>
+</ul>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Base64, Hex, and URL Encoding</h3>
+<p style="margin-top:12px;">
+These are common encoding schemes used to safely represent binary or special characters as plain text. They provide no security on their own &mdash; anyone can decode them instantly, so they should never be mistaken for encryption.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Hashing: MD5 and the SHA Family</h3>
+<p style="margin-top:12px;">
+A hash function takes an input of any size and produces a fixed length output. The same input always produces the same hash, but you cannot reverse a hash back into the original input. MD5 and SHA-1 are considered broken for security purposes today; modern systems use SHA-256 or stronger, combined with salting for passwords.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Symmetric vs Asymmetric Encryption</h3>
+<p style="margin-top:12px;">
+Symmetric encryption uses the same key to encrypt and decrypt data, so both sides must securely share that key in advance. Asymmetric encryption uses a key pair: a public key that anyone can use to encrypt, and a private key that only the owner has, used to decrypt. HTTPS relies on a combination of both.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Common Developer Mistakes</h3>
+<ul style="margin:8px 0 0 20px;color:var(--muted);">
+<li>Storing passwords in plain text instead of hashing them</li>
+<li>Hashing passwords without a unique salt per user</li>
+<li>Using outdated algorithms like MD5 or SHA-1 for security purposes</li>
+<li>Hardcoding encryption keys directly in source code</li>
+<li>Confusing encoding (like Base64) with actual encryption</li>
+</ul>
+</div>
+
+<div class="card" style="margin-top:30px;">
+<h3>Next Step</h3>
+<p style="margin-top:10px;">
+<a href="/learn/ethical-hacking-mindset" class="btn">Continue to Lesson 6: Ethical Hacking Mindset &rarr;</a>
+</p>
+</div>
+{% endblock %}
