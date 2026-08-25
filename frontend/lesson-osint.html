@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disclaimer">
+Educational content only. Always practice on systems you own or have explicit permission to test.
+</div>
+
+<p style="margin-bottom:20px;"><a href="/learn">&larr; Back to Learning Paths</a></p>
+
+<h1>Lesson 4 &mdash; OSINT Techniques</h1>
+<p class="lead">
+OSINT (Open Source Intelligence) is the art of collecting publicly available information. Done correctly, it is completely legal and extremely useful for research, investigations, and security assessments.
+</p>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>What Counts as OSINT</h3>
+<p style="margin-top:12px;">
+OSINT covers any information that is publicly accessible: social media profiles, public records, company websites, domain registration data, news articles, and metadata embedded in public files. If it required no special access or hacking to obtain, it is generally considered OSINT.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Username Enumeration</h3>
+<p style="margin-top:12px;">
+Many people reuse the same username across multiple platforms. Checking whether a given username exists on various sites can help build a picture of someone's public online presence, without needing to log in or bypass any security.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Domain and WHOIS Intelligence</h3>
+<p style="margin-top:12px;">
+WHOIS records can reveal who registered a domain, when it was created, and which name servers it uses. This is public registry data that anyone can query.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>DNS and Infrastructure Mapping</h3>
+<p style="margin-top:12px;">
+Looking up a domain's DNS records (A, MX, NS, TXT) shows how its infrastructure is organized: which mail provider it uses, which servers respond to requests, and how subdomains are structured.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Social Media Footprint Analysis</h3>
+<p style="margin-top:12px;color:var(--muted);">
+Public posts, profile information, and metadata on photos can reveal far more than people realize. Understanding this helps both investigators and everyday users protect their own privacy.
+</p>
+</div>
+
+<div class="card" style="margin-bottom:24px;">
+<h3>Staying Within Legal Boundaries</h3>
+<p style="margin-top:12px;color:var(--muted);font-size:0.95rem;">
+OSINT should only use information that is already public. Do not attempt to access private accounts, bypass authentication, or use social engineering to trick someone into revealing information. Always respect local laws and platform terms of service.
+</p>
+<p style="margin-top:12px;">
+<a href="/osint" class="btn">Open OSINT Tools &rarr;</a>
+</p>
+</div>
+
+<div class="card" style="margin-top:30px;">
+<h3>Next Step</h3>
+<p style="margin-top:10px;">
+<a href="/learn/cryptography-basics" class="btn">Continue to Lesson 5: Cryptography Basics &rarr;</a>
+</p>
+</div>
+{% endblock %}
